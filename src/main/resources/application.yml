@@ -3,9 +3,9 @@ spring:
     name: bookmanagement
 
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:bookdb}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://localhost:5432/bookdb
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:
