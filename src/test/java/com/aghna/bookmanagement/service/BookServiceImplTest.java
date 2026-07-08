@@ -47,7 +47,7 @@ class BookServiceImplTest {
                 .id(1L)
                 .title("Harry Potter")
                 .author("J.K. Rowling")
-                .isbn("123456789")
+                .isbn("1234567891")
                 .publishedDate(LocalDate.of(1997, 6, 26))
                 .build();
     }
@@ -59,7 +59,7 @@ class BookServiceImplTest {
         BookRequest request = new BookRequest(
                 "Harry Potter",
                 "J.K. Rowling",
-                "123456789",
+                "1234567891",
                 LocalDate.of(1997, 6, 26));
 
         when(bookRepository.existsByIsbn(request.isbn())).thenReturn(false);
@@ -81,7 +81,7 @@ class BookServiceImplTest {
         BookRequest request = new BookRequest(
                 "Harry Potter",
                 "J.K. Rowling",
-                "123456789",
+                "1234567891",
                 LocalDate.of(1997, 6, 26));
 
         when(bookRepository.existsByIsbn(request.isbn())).thenReturn(true);
@@ -89,7 +89,7 @@ class BookServiceImplTest {
         // WHEN & THEN
         assertThatThrownBy(() -> bookService.create(request))
                 .isInstanceOf(DuplicateResourceException.class)
-                .hasMessageContaining("123456789");
+                .hasMessageContaining("1234567891");
 
         verify(bookRepository, never()).save(any());
     }
@@ -131,7 +131,7 @@ class BookServiceImplTest {
         // THEN
         assertThat(responses).hasSize(1);
         assertThat(responses.get(0).title()).isEqualTo("Harry Potter");
-        assertThat(responses.get(0).isbn()).isEqualTo("123456789");
+        assertThat(responses.get(0).isbn()).isEqualTo("1234567891");
     }
 
     @Test
@@ -154,7 +154,7 @@ class BookServiceImplTest {
         // THEN
         assertThat(response.title()).isEqualTo("Batman");
         assertThat(response.author()).isEqualTo("J.K. Rowling");
-        assertThat(response.isbn()).isEqualTo("123456789");
+        assertThat(response.isbn()).isEqualTo("1234567891");
     }
 
     @Test
